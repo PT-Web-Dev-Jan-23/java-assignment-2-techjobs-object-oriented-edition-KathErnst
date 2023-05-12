@@ -49,17 +49,29 @@ public class Job {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append("\nID: ").append(getId());
-        stringBuilder.append("\nName: ").append(getName().equals("") ? "Data not available" : getName());
-        stringBuilder.append("\nEmployer: ").append(getEmployer().equals("") ? "Data not available" : getEmployer());
-        stringBuilder.append("\nLocation: ").append(getLocation().equals("") ? "Data not available" : getLocation());
-        stringBuilder.append("\nPosition Type: ").append(getPositionType().equals("") ? "Data not available" : getPositionType());
-        stringBuilder.append("\nCore Competency: ").append(getCoreCompetency().equals("") ? "Data not available" : getCoreCompetency());
-        stringBuilder.append("\n");
-
-        return stringBuilder.toString();
+        String str;
+        if (name.equals("")) {
+            name = "Data not available";
+        }
+        if (employer.getValue().equals("")){
+            employer.setValue("Data not available");
+        }
+        if (location.getValue().equals("")){
+            location.setValue("Data not available");
+        }
+        if (positionType.getValue().equals("")){
+            positionType.setValue("Data not available");
+        }
+        if (coreCompetency.getValue().equals("")){
+            coreCompetency.setValue("Data not available");
+        }
+        str = "\nID: " + id +
+                "\nName: " + name +
+                "\nEmployer: " + employer +
+                "\nLocation: " + location +
+                "\nPosition Type: " + positionType +
+                "\nCore Competency: " + coreCompetency + "\n";
+        return str;
     }
 
 

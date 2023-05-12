@@ -39,7 +39,7 @@ public class JobTest {
     public void testJobsForEquality(){
         Job testJob1 = new Job("Rollercoaster Monitor", new Employer("Six Flags"), new Location("Eureka"), new PositionType("Safety"), new CoreCompetency("Friendly"));
         Job testJob2 = new Job("Rollercoaster Monitor", new Employer("Six Flags"), new Location("Eureka"), new PositionType("Safety"), new CoreCompetency("Friendly"));
-        assertNotEquals(testJob1, testJob2);
+        assertFalse(testJob1.equals(testJob2));
     }
 
     @Test
@@ -54,21 +54,24 @@ public class JobTest {
 
     @Test
     public void testToStringContainsCorrectLabelsAndData(){
-        Job testJob1 = new Job("Rollercoaster Monitor", new Employer("Six Flags"), new Location("Eureka"), new PositionType("Safety"), new CoreCompetency("Friendly"));
-        String expected = "\nID: " + testJob1.getId() + "\nName: " + testJob1.getName() +"\nEmployer: " +
-                testJob1.getEmployer() + "\nLocation: " + testJob1.getLocation() + "\nPosition Type: " +
-                testJob1.getPositionType() + "\nCore Competency: " + testJob1.getCoreCompetency() + "\n";
-        String actual = testJob1.toString();
+        Job testJobA = new Job("Rollercoaster Monitor", new Employer("Six Flags"), new Location("Eureka"), new PositionType("Safety"), new CoreCompetency("Friendly"));
+        String expected = "\nID: " + testJobA.getId() + "\nName: " + testJobA.getName() +"\nEmployer: " +
+                testJobA.getEmployer() + "\nLocation: " + testJobA.getLocation() + "\nPosition Type: " +
+                testJobA.getPositionType() + "\nCore Competency: " + testJobA.getCoreCompetency() + "\n";
+        String actual = testJobA.toString();
         assertEquals(expected, actual);
     }
 
     @Test
     public void testToStringHandlesEmptyField(){
-        Job testJob1 = new Job("Rollercoaster Monitor", new Employer("Six Flags"), new Location("Eureka"), new PositionType(""), new CoreCompetency(""));
-        String expected = "\nID: " + testJob1.getId() + "\nName: " + testJob1.getName() +"\nEmployer: " +
-                testJob1.getEmployer() + "\nLocation: " + testJob1.getLocation() + "\nPosition Type: " +
-                "Data not available" + "\nCore Competency: " + "Data not available" + "\n";
-        String actual = testJob1.toString();
+        Job testJob5 = new Job("Rollercoaster Monitor",
+                new Employer("Six Flags"),
+                new Location("Eureka"),
+                new PositionType(""),
+                new CoreCompetency(""));
+        String expected = "\nID: " + testJob5.getId() + "\n" + "Name: Rollercoaster Monitor\n" + "Employer: Six Flags\n" + "Location: Eureka\n" +
+                "Position Type: Data not available\n" + "Core Competency: Data not available\n";
+        String actual = testJob5.toString();
         assertEquals(expected, actual);
     }
 
